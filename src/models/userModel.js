@@ -9,9 +9,9 @@ const createUserModel = async (user) => {
   }
 }
 
-const findUserModel = async (username) => {
+const findUserModel = async (username, password) => {
   try {
-    const finding = await userModel.find({ username });
+    const finding = await userModel.find({ username, password });
 
     return finding;
   } catch (error) {
