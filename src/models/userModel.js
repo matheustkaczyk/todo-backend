@@ -1,15 +1,12 @@
-const userModel = require('../models/userModel.js');
+const userModel = require('../database/userSchema');
 
-const createUser = (username, password) => {
-  const user = new userModel(username, password);
-
+const createUserModel = async (user) => {
   try {
-    const saving = await user.save();
-
-    return saving;
+    const creating = await userModel.create(user);
+    return creating;
   } catch (error) {
-    return error;
+    throw new Error(error);
   }
 }
 
-module.exports = { createUser };
+module.exports = { createUserModel };

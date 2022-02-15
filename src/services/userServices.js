@@ -1,14 +1,15 @@
-const { createUser } = require('../models/userModel');
+const { createUserModel } = require('../models/userModel');
 
 const md5 = require('md5');
 
-const userService = (username, password) => {
+const createUserService = async (user) => {
   try {
-    const creating = createUser(username, md5(password))
+    user.password = md5(user.password);
+    const creating = await createUserModel(user);
     return creating;
   } catch (error) {
     return error;
   }
 }
 
-module.exports = { userService };
+module.exports = { createUserService };

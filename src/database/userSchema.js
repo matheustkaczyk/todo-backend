@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+const db = require('../database/connection');
+
+db.connection;
 
 const UserSchema = new mongoose.Schema({
   username: {
