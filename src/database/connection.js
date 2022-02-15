@@ -1,9 +1,20 @@
 const mongoose = require('mongoose');
 
-const uri = 'mongodb://localhost/todo';
+const url = 'mongodb://localhost:27017/todo';
 
-mongoose.connect(uri, { useNewUrlParser: true });
+mongoose.connect(url,
+  {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true
+  }
+);
 
-const db = mongoose.connection();
+const db = mongoose.connection;
+
+db.on("error", console.error.bind(console, "connection error: "));
+db.once("open", function () {
+  console.log("Connected successfully");
+});
 
 module.exports = db;
