@@ -9,4 +9,14 @@ const createUserModel = async (user) => {
   }
 }
 
-module.exports = { createUserModel };
+const findUserModel = async (username) => {
+  try {
+    const finding = await userModel.find({ username });
+
+    return finding;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+module.exports = { createUserModel, findUserModel };

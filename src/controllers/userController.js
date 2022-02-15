@@ -6,7 +6,6 @@ const createUserController = async (req, res) => {
 
     if (creating) return res.status(201).json({ message: 'User successfuly created' })
   } catch (error) {
-    console.error(error);
     res.status(404).json({ message: error.message });
   }
 };
