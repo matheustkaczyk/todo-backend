@@ -1,7 +1,8 @@
 const {
   createTaskService,
   findingByUserIdService,
-  updateTaskService
+  updateTaskService,
+  deleteTaskService
 } = require('../services/todoServices');
 
 const findingByUserIdController = async (req, res) => {
@@ -34,7 +35,20 @@ const updateTaskController = async (req, res) => {
 
     await updateTaskService(id, description, userId);
 
-    res.status(200).json({ mesagge: 'Task successfully updated' });
+    res.status(200).json({ message: 'Task successfully updated' });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+const deleteTaskController = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { userId } = req.user;
+
+    await deleteTaskService(id, userId);
+
+    res.status(200).json({ message: 'Task successfully deleted' })
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -43,5 +57,6 @@ const updateTaskController = async (req, res) => {
 module.exports = {
   createTaskController,
   findingByUserIdController,
-  updateTaskController
+  updateTaskController,
+  deleteTaskController
 };

@@ -1,4 +1,9 @@
-const { createTaskModel, getTaskByIdModel, updateTaskModel } = require('../models/todoModels');
+const {
+  createTaskModel,
+  getTaskByIdModel,
+  updateTaskModel,
+  deleteTaskModel
+} = require('../models/todoModels');
 
 const findingByUserIdService = async (userId) => {
   const finding = await getTaskByIdModel(userId);
@@ -19,4 +24,17 @@ const updateTaskService = async (id, description, userId) => {
   return updating;
 };
 
-module.exports = { createTaskService, findingByUserIdService, updateTaskService };
+const deleteTaskService = async (id, userId) => {
+  const deleting = await deleteTaskModel(id, userId);
+
+  if (deleting.deletedCount > 0) return deleting;
+
+  throw new Error('Task not found');
+};
+
+module.exports = {
+  createTaskService,
+  findingByUserIdService,
+  updateTaskService,
+  deleteTaskService
+};

@@ -27,4 +27,19 @@ const updateTaskModel = async (id, description, userId) => {
   }
 };
 
-module.exports = { createTaskModel, getTaskByIdModel, updateTaskModel };
+const deleteTaskModel = async (id, userId) => {
+  try {
+    const deleting = await todoModel.deleteOne({ _id: id, userId });
+
+    return deleting;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+module.exports = {
+  createTaskModel,
+  getTaskByIdModel,
+  updateTaskModel,
+  deleteTaskModel
+};
