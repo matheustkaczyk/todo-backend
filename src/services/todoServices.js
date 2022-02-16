@@ -1,4 +1,4 @@
-const { createTaskModel, getTaskByIdModel } = require('../models/todoModels');
+const { createTaskModel, getTaskByIdModel, updateTaskModel } = require('../models/todoModels');
 
 const findingByUserIdService = async (userId) => {
   const finding = await getTaskByIdModel(userId);
@@ -13,4 +13,10 @@ const createTaskService = async (task, user) => {
   return creating;
 };
 
-module.exports = { createTaskService, findingByUserIdService };
+const updateTaskService = async (id, description, userId) => {
+  const updating = await updateTaskModel(id, description, userId);
+
+  return updating;
+};
+
+module.exports = { createTaskService, findingByUserIdService, updateTaskService };

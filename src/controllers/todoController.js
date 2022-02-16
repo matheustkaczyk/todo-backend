@@ -1,4 +1,8 @@
-const { createTaskService, findingByUserIdService } = require('../services/todoServices');
+const {
+  createTaskService,
+  findingByUserIdService,
+  updateTaskService
+} = require('../services/todoServices');
 
 const findingByUserIdController = async (req, res) => {
   try {
@@ -22,4 +26,22 @@ const createTaskController = async (req, res) => {
   }
 };
 
-module.exports = { createTaskController, findingByUserIdController };
+const updateTaskController = async (req, res) => {
+  try {
+    const { description } = req.body;
+    const { id } = req.params;
+    const { userId } = req.user;
+
+    await updateTaskService(id, description, userId);
+
+    res.status(200).json({ mesagge: 'Task successfully updated' });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+module.exports = {
+  createTaskController,
+  findingByUserIdController,
+  updateTaskController
+};

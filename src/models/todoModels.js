@@ -18,4 +18,13 @@ const createTaskModel = async (task) => {
   }
 };
 
-module.exports = { createTaskModel, getTaskByIdModel };
+const updateTaskModel = async (id, description, userId) => {
+  try {
+    const updating = await todoModel.updateOne({ _id: id, userId }, { $set: { description } });
+    return updating;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+module.exports = { createTaskModel, getTaskByIdModel, updateTaskModel };
