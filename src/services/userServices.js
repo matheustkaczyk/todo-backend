@@ -22,8 +22,9 @@ const createUserService = async (user) => {
 
 const loginUserService = async (user) => {
   const doesExist = await findingUserService(user.username, user.password);
+  const userInfo = { userId: doesExist[0]._id, ...user };
 
-  if (doesExist.length > 0) return jwtSignature(user);
+  if (doesExist.length > 0) return jwtSignature(userInfo);
 
   throw new Error('User does not exist');
 }
