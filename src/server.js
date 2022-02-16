@@ -6,8 +6,9 @@ const app = express();
 
 app.use(express.json());
 
-app.get('/', (_req, res) => res.status(200).json({ message: 'API rodando' }));
 app.post('/user', createUserController);
 app.post('/login', loginUserController);
+
+// app.post('/todo', )
 
 module.exports = app;

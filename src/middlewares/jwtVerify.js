@@ -8,7 +8,8 @@ const jwtVerify = (req, res, next) => {
   if (!authorization) return res.status(404).json({ message: 'Missing authorization' });
 
   try {
-    jwt.verify(authorization, secret);
+    const verify = jwt.verify(authorization, secret);
+    req.user = verify;
     next()
   } catch (error) {
     return res.status(404).json({ message: error.message });
