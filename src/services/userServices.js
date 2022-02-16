@@ -1,4 +1,4 @@
-const { createUserModel, findUserModel } = require('../models/userModel');
+const { createUserModel, findUserModel } = require('../models/userModels');
 
 const md5 = require('md5');
 
