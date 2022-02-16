@@ -12,6 +12,10 @@ const TodoSchema = new mongoose.Schema({
     type: 'string',
     required: true
   },
+  status: {
+    type: 'string',
+    required: true
+  },
   date: {
     type: 'date',
     required: true

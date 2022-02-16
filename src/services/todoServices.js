@@ -13,13 +13,13 @@ const findingByUserIdService = async (userId) => {
 const createTaskService = async (task, user) => {
   const { description } = task;
 
-  const newTask = { userId: user.userId, description,  date: new Date() }
+  const newTask = { userId: user.userId, description, status: 'Pendente',  date: new Date() }
   const creating = await createTaskModel(newTask);
   return creating;
 };
 
-const updateTaskService = async (id, description, userId) => {
-  const updating = await updateTaskModel(id, description, userId);
+const updateTaskService = async (id, description, status, userId) => {
+  const updating = await updateTaskModel(id, description, status, userId);
 
   return updating;
 };

@@ -29,11 +29,11 @@ const createTaskController = async (req, res) => {
 
 const updateTaskController = async (req, res) => {
   try {
-    const { description } = req.body;
+    const { description, status } = req.body;
     const { id } = req.params;
     const { userId } = req.user;
 
-    await updateTaskService(id, description, userId);
+    await updateTaskService(id, description, status, userId);
 
     res.status(200).json({ message: 'Task successfully updated' });
   } catch (error) {

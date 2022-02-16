@@ -7,7 +7,7 @@ const getTaskByIdModel = async (userId) => {
   } catch (error) {
     throw new Error(error.message);
   }
-}
+};
 
 const createTaskModel = async (task) => {
   try {
@@ -18,9 +18,9 @@ const createTaskModel = async (task) => {
   }
 };
 
-const updateTaskModel = async (id, description, userId) => {
+const updateTaskModel = async (id, description, status, userId) => {
   try {
-    const updating = await todoModel.updateOne({ _id: id, userId }, { $set: { description } });
+    const updating = await todoModel.updateOne({ _id: id, userId }, { $set: { description, status } });
     return updating;
   } catch (error) {
     throw new Error(error.message);
