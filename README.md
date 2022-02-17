@@ -47,13 +47,14 @@ Executa os testes de integração
 ### POST '/user'
 Cria um usuário no banco de dados
 
-* `{ "username": "João teste", "password": "teste123" }` Payload
+Payload
+* `{ "username": "João teste", "password": "teste123" }` 
 
 ### Resposta
 
-`
+
 {
     "message": "User successfuly created"
 }
-`
+
 
