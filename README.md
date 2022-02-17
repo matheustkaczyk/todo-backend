@@ -39,3 +39,21 @@ Inicia a API
 
 * `npm test`
 Executa os testes de integração
+
+# Rotas
+
+## Usuário
+
+### POST '/user'
+Cria um usuário no banco de dados
+
+* `{ "username": "João teste", "password": "teste123" }` Payload
+
+### Resposta
+
+`
+{
+    "message": "User successfuly created"
+}
+`
+
