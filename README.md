@@ -99,3 +99,37 @@ Payload
 }
 `
 
+### DELETE '/todo/:id'
+Deleta uma tarefa
+
+### Resposta
+`
+{
+    "message": "Task successfully deleted"
+}
+`
+
+### GET '/todo'
+Pega todas as tarefas do usuário logado
+
+### Resposta
+`
+[
+    {
+        "_id": "620e4e263154519e629cb1d4",
+        "userId": "620e4931bf9fb77959919009",
+        "description": "Play",
+        "status": "Pendente",
+        "date": "2022-02-17T13:31:18.062Z",
+        "__v": 0
+    },
+    {
+        "_id": "620e4e293154519e629cb1d6",
+        "userId": "620e4931bf9fb77959919009",
+        "description": "Study",
+        "status": "Pendente",
+        "date": "2022-02-17T13:31:21.477Z",
+        "__v": 0
+    }
+]
+`
