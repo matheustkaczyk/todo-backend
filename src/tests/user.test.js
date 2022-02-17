@@ -9,6 +9,11 @@ let should = chai.should();
 
 chai.use(chaiHttp);
 
+const defaultUser = {
+  username: 'teste',
+  password: 'teste123'
+};
+
 describe('User creation', () => {
   mocha.beforeEach((done) => {
     User.remove({}, () => done())
@@ -44,7 +49,7 @@ describe('User creation', () => {
       res.should.have.status(404);
       res.body.should.be.a('object');
       res.body.should.have.property('message');
-      res.body.should.have.property('message').equal('ValidationError: username: Path `username` is required.');
+      res.body.should.have.property('message').equal('Please enter a username and password');
       done();
     })
   });
@@ -61,7 +66,7 @@ describe('User creation', () => {
       res.should.have.status(404);
       res.body.should.be.a('object');
       res.body.should.have.property('message');
-      res.body.should.have.property('message').equal('Illegal argument undefined');
+      res.body.should.have.property('message').equal('Please enter a username and password');
       done();
     })
   });
@@ -77,13 +82,9 @@ describe('User login', () => {
   });
 
   it('Testa que a pessoa usuária consegue logar', (done) => {
-    const user = {
-      username: 'teste',
-      password: 'teste123'
-    }
     chai.request(server)
     .post('/login')
-    .send(user)
+    .send(defaultUser)
     .end((_err, res) => {
       res.should.have.status(200);
       res.body.should.be.a('object');
@@ -113,7 +114,7 @@ describe('User login', () => {
       res.should.have.status(400);
       res.body.should.be.a('object');
       res.body.should.have.property('message');
-      res.body.should.have.property('message').equal("Cannot read properties of undefined (reading '_id')");
+      res.body.should.have.property('message').equal("User not found");
       done();
     })
   });
@@ -134,4 +135,23 @@ describe('User login', () => {
       done();
     })
   });
+
+  describe('Verifica que a pessoa usuária não consegue logar sem tiver cadastrado', () => {
+    mocha.beforeEach((done) => {
+      User.remove({}, () => done());
+    });
+
+    it('Verifica se usuário inexistente NÃO consegue logar', (done) => {
+      chai.request(server)
+      .post('/login')
+      .send(defaultUser)
+      .end((_err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.a('object');
+        res.body.should.have.property('message');
+        res.body.should.have.property('message').equal('User not found');
+        done();
+      })
+    })
+  })
 })
