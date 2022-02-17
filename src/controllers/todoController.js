@@ -10,7 +10,7 @@ const findingByUserIdController = async (req, res) => {
     const { userId } = req.user;
     const finding = await findingByUserIdService(userId)
 
-    return res.status(200).json({ data: finding });
+    return res.status(200).json(finding);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
