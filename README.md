@@ -27,10 +27,15 @@ O projeto desenvolvido é um C.R.U.D. de tarefas (To do list), essa API possui t
 * `git clone git@github.com:matheustkaczyk/trybe-case-todo-backend.git`
 * `cd trybe-case-todo-backend`
 
-### Executing program
+### Executando o programa
 
 * `npm install`
 Instala todas as dependências necessárias para rodar o projeto
 
 * `npm start`
 Inicia a API
+
+### Executando os testes
+
+* `npm test`
+Executa os testes de integração
