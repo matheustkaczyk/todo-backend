@@ -64,11 +64,11 @@ Payload
 * `{ "username": "João teste", "password": "teste123" }` 
 
 ### Resposta
-`
+```
 {
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjBlNDkzMWJmOWZiNzc5NTk5MTkwMDkiLCJ1c2VybmFtZSI6InRlc3RlIiwicGFzc3dvcmQiOiJ0ZXN0ZTEyMyIsImlhdCI6MTY0NTEwMzYxNSwiZXhwIjoxNjQ1NzA4NDE1fQ.VaXPGBnMHOi_aBu52jjwAaa6U4k7kbX7cIeK27Lkyck"
 }
-`
+```
 
 ## Tarefas
 É necessário o token na chave `authorization` no header
@@ -93,11 +93,11 @@ Payload
 * `{ "description": "Codar", "status": "Em progresso" }`
 
 ### Resposta
-`
+```
 {
     "message": "Task successfully updated"
 }
-`
+```
 
 ### DELETE '/todo/:id'
 Deleta uma tarefa
@@ -113,7 +113,7 @@ Deleta uma tarefa
 Pega todas as tarefas do usuário logado
 
 ### Resposta
-`
+```
 [
     {
         "_id": "620e4e263154519e629cb1d4",
@@ -132,4 +132,4 @@ Pega todas as tarefas do usuário logado
         "__v": 0
     }
 ]
-`
+```
